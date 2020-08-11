@@ -1,0 +1,95 @@
+disabled_rules:
+  - todo
+  - superfluous_disable_command
+
+opt_in_rules:
+  - unneeded_parentheses_in_closure_argument
+  - sorted_imports
+  - empty_string
+  - force_unwrapping
+  - empty_count
+  - explicit_init
+  - empty_parentheses_with_trailing_closure
+
+included:
+  - Universe
+  - UniverseTests
+
+excluded:
+  - Pods
+
+line_length: 350
+
+# Multiline collections should have a trailing comma to improve diffs when
+# adding a new item to the collection.
+trailing_comma:
+  mandatory_comma: true
+
+# Ensure else & catch statements start on new lines.
+statement_position:
+  statement_mode: uncuddled_else
+
+# We set the minimum to 2 because a variable named id should be valid.
+identifier_name:
+  min_length: 2
+  excluded:
+      - x
+      - y
+
+type_name:
+  min_length: 2
+
+nesting:
+  type_level:
+    warning: 4
+    error: 5
+  statement_level: 5
+
+trailing_whitespace:
+  ignores_empty_lines: true
+  ignores_comments: true
+
+# We want to have the default levels for errors here but we'll need to refactor later to make that happen
+cyclomatic_complexity:
+  ignores_case_statements: true
+  warning: 23
+  error: 23
+
+# This should be removed as soon as we make that big tuple in ThemePickerFormController a struct
+large_tuple:
+  warning: 2
+  error: 7
+
+# It'd be nice to get this lower, but we can't just yet because of existing
+# code being too long but not having the chance to refactor.
+type_body_length:
+  warning: 1150
+  error: 1200
+
+file_length:
+  warning: 2200
+  error: 2300
+
+function_body_length:
+  warning: 140
+  error: 150
+  
+function_parameter_count:
+  warning: 8
+  error: 8
+  
+force_unwrapping: error
+
+custom_rules:
+  # universe_analytics_event_name_format:
+  #   name: "Analytics Event Name Format"
+  #   message: "Firebase restricts event names to alphanumeric and underscore characters."
+  #   severity: error
+  #   regex: 'UserAction\(name: "((\w+_?)+(:\w+)+)*"'
+  universe_analytics_event_name_length:
+    name: "Analytics Event Name Length"
+    message: "Firebase limits event names to 40 characters."
+    severity: error
+    regex: 'UserAction\(name: "([\w]{40,})"'
+
+reporter: "xcode"

@@ -16,7 +16,7 @@ Our overarching goals are clarity, consistency, and longevity, in that order.
   * [Generics](#generics)
   * [Class Prefixes](#class-prefixes)
   * [Language](#language)
-  * [Abbreviations] (#abbreviations)
+  * [Abbreviations](#abbreviations)
 * [Code Organization](#code-organization)
   * [Protocol Conformance](#protocol-conformance)
   * [Unused Code](#unused-code)

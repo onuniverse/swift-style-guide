@@ -137,12 +137,15 @@ func namePickerShouldReload() -> Bool
 
 Use compiler inferred context to write shorter, clear code. (Also see [Type Inference](#type-inference).)
 
+This rule does not apply to initialization, where explicit type is still preferred.
+
 **Preferred**:
 ```swift
 let selector = #selector(viewDidLoad)
 view.backgroundColor = .red
 let toView = context.view(forKey: .to)
 let view = UIView(frame: .zero)
+view.frame.inset(by: UIEdgeInsets(all: 10))
 ```
 
 **Not Preferred**:
@@ -151,6 +154,7 @@ let selector = #selector(ViewController.viewDidLoad)
 view.backgroundColor = UIColor.red
 let toView = context.view(forKey: UITransitionContextViewKey.to)
 let view = UIView(frame: CGRect.zero)
+view.frame.inset(by: .init(all: 10))
 ```
 
 ### Generics

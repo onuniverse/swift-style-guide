@@ -16,6 +16,7 @@ Our overarching goals are clarity, consistency, and longevity, in that order.
   * [Generics](#generics)
   * [Class Prefixes](#class-prefixes)
   * [Language](#language)
+  * [Abbreviations] (#abbreviations)
 * [Code Organization](#code-organization)
   * [Protocol Conformance](#protocol-conformance)
   * [Unused Code](#unused-code)
@@ -187,6 +188,28 @@ let color = "red"
 **Not Preferred**:
 ```swift
 let colour = "red"
+```
+
+### Abbreviations
+
+For variable names based on abbreviations like URL or ID, when used as part of a word like ImageURL the variable name should be camel cased with the abreviation capitalized. But when they are alone, they should be lowercased.
+
+**Preferred**
+```swift
+let imageURL = URL()
+let url = URL()
+
+let userID = 1
+let id = 1
+```
+
+**Not Preferred**
+```swift
+let imageUrl = URL()
+let URL = URL()
+
+let userId = 1
+let ID = 1
 ```
 
 ## Code Organization

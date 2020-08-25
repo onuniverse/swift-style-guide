@@ -223,9 +223,12 @@ For UIKit view controllers, consider grouping lifecycle, custom accessors, and I
 
 ### Unused Code
 
-Unused (dead) code, including Xcode template code and placeholder comments should be removed.
+Xcode template code and placeholder comments should **not** be removed.
+
+Other unused (dead) code should be removed and should never reach `development` branch. You can keep commented code in your branch or even in a feature branch, but `development` branch should be clean from commented code. If a future feature needs some code that has been removed, it can always be retrieved using git. Mark your commit name accordingly when removing code if it is susceptible to be used in the future, it will make it easier to cherry pick.
 
 Aspirational methods whose implementation simply calls the superclass should also be removed. This includes any empty/unused UIApplicationDelegate methods.
+
 
 **Preferred**:
 ```swift

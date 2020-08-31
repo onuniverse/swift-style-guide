@@ -662,6 +662,8 @@ let math = Math() // what is math?
 
 Static methods and type properties work similarly to global functions and global variables and should be used sparingly. They are useful when functionality is scoped to a particular type or when Objective-C interoperability is required.
 
+Although static methods can be handy, they should be avoided almost in all situations. Prefer a shared instance over static methods. Static methods are impossible to test when used from other objects/types in your code.
+
 ### Optionals
 
 Declare variables and function return types as optional with `?` where a `nil` value is acceptable.

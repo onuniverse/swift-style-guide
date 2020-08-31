@@ -628,7 +628,7 @@ Constants are defined using the `let` keyword and variables with the `var` keywo
 
 **Tip:** A good technique is to define everything using `let` and only change it to `var` if the compiler complains!
 
-You can define constants on a type rather than on an instance of that type using type properties. To declare a type property as a constant simply use `static let`. Type properties declared in this way are generally preferred over global constants because they are easier to distinguish from instance properties. Example:
+You can define constants on a type rather than on an instance of that type using type properties. To declare a type property as a constant simply use `static let`. Type properties declared in this way are generally preferred over global constants because they are easier to distinguish from instance properties. Prefer using `enum` over `struct` when using type-declared-constants. The reason is because swift auto-generates initializers for `struct` types, which can lead to confusion. Example:
 
 **Preferred**:
 ```swift
@@ -648,6 +648,14 @@ let e = 2.718281828459045235360287  // pollutes global namespace
 let root2 = 1.41421356237309504880168872
 
 let hypotenuse = side * root2 // what is root2?
+
+// Also not preferred - Using structs for constant definitions
+struct Math {
+    static let e = 2.718281828459045235360287
+    static let root2 = 1.41421356237309504880168872
+}
+
+let math = Math() // what is math?
 ```
 
 ### Static Methods and Variable Type Properties

@@ -1073,6 +1073,20 @@ In larger expressions, optional parentheses can sometimes make code read more cl
 let playerMark = (player == current ? "X" : "O")
 ```
 
+## NSLocalizedStrings
+For most `NSLocalizedString`s, the `key` and the `comment` can be the same if the `key` sufficiently describes itself. Otherwise, use a descriptive `comment` for the `key`. If the `key` is a string that is likely to be used in many places, try not to use a `comment` that makes it specific to a screen/view.
+
+**Preferred**
+
+```
+NSLocalizedString("Dismiss", comment: "Dismiss")
+```
+
+**Not Preferred**
+```
+NSLocalizedString("Dismiss", comment: "Dismiss button in the editor help menu.")
+```
+
 ## Multi-line String Literals
 
 When building a long string literal, you're encouraged to use the multi-line string literal syntax. Open the literal on the same line as the assignment but do not include text on that line. Indent the text block one additional level.

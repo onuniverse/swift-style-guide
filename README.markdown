@@ -1040,7 +1040,21 @@ if let number1 = number1 {
 
 ### Failing Guards
 
-Guard statements are required to exit in some way. Generally, this should be simple one line statement such as `return`, `throw`, `break`, `continue`, and `fatalError()`. Large code blocks should be avoided. If cleanup code is required for multiple exit points, consider using a `defer` block to avoid cleanup code duplication.
+`guard` statements are required to exit in some way. Generally, this should be simple one line statement such as `return`, `throw`, `break`, `continue`, and `fatalError()`. Large code blocks should be avoided. If cleanup code is required for multiple exit points, consider using a `defer` block to avoid cleanup code duplication.
+
+`guard` exits should not be on the same line as the `guard` conditional expression. It should be clear when we are going to `return`, `throw` etc and leave the current scope. Inlining the exit with the conditional, serves to obfuscate the logic that happens in the exit block of the `guard` and makes it less clear when we are leaving scope.
+
+**Preferred**
+```
+guard someBoolean else {
+	return
+}
+```
+
+**Not Preferred**
+```
+guard someBoolean else { return }
+```
 
 ## Semicolons
 

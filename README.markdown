@@ -214,7 +214,15 @@ let ID = 1
 
 ## Code Organization
 
-Use extensions to organize your code into logical blocks of functionality. Each extension should be set off with a `// MARK: -` comment to keep things well-organized.
+Use extensions to organize your code into logical blocks of functionality. Each extension should be set off with a the following comment to keep things well-organized.
+
+```
+    //==========================================================================
+    // MARK: - Something
+    //==========================================================================
+```
+
+Tip: See [here](https://github.com/orgs/onuniverse/teams/ios-maintainers/discussions/4) for a handy code snippet.
 
 ### Protocol Conformance
 
@@ -226,12 +234,16 @@ class MyViewController: UIViewController {
     // class stuff here
 }
 
+//==========================================================================
 // MARK: - UITableViewDataSource
+//==========================================================================
 extension MyViewController: UITableViewDataSource {
     // table view data source methods
 }
 
-// MARK: - UIScrollViewDelegate
+//==========================================================================
+// MARK: - UIScrollViewDelegate 
+//==========================================================================
 extension MyViewController: UIScrollViewDelegate {
     // scroll view delegate methods
 }

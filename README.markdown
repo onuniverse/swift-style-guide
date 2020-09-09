@@ -223,7 +223,7 @@ For UIKit view controllers, consider grouping lifecycle, custom accessors, and I
 
 ### Unused Code
 
-Xcode template code and placeholder comments should **not** be removed.
+Xcode templates' code and comments should be removed. Header comment (which includes filename, author and copyright) should be the only Xcode generated comment to keep.
 
 Other unused (dead) code should be removed and should never reach `development` branch. You can keep commented code in your branch or even in a feature branch, but `development` branch should be clean from commented code. If a future feature needs some code that has been removed, it can always be retrieved using git. Mark your commit name accordingly when removing code if it is susceptible to be used in the future, it will make it easier to cherry pick.
 

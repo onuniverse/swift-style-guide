@@ -717,7 +717,9 @@ if let subview = subview, let volume = volume {
 
 // another example
 resource.request().onComplete { [weak self] response in
-    guard let self = self else { return }
+    guard let self = self else { 
+	    return 
+    }
     let model = self.updateModel(response)
     self.updateUI(model)
 }
@@ -736,7 +738,9 @@ if let unwrappedSubview = optionalSubview {
 
 // another example
 UIView.animate(withDuration: 2.0) { [weak self] in
-    guard let strongSelf = self else { return }
+    guard let strongSelf = self else { 
+	    return 
+    }
     strongSelf.alpha = 1.0
 }
 ```
@@ -854,7 +858,13 @@ Code should not create reference cycles. Analyze your object graph and prevent s
 
 ### Extending object lifetime
 
-Extend object lifetime using the `[weak self]` and `guard let self = self else { return }` idiom. `[weak self]` is preferred to `[unowned self]` where it is not immediately obvious that `self` outlives the closure. Explicitly extending lifetime is preferred to optional chaining.
+Extend object lifetime using the `[weak self]` and 
+```
+guard let self = self else { 
+	return 
+}
+```
+idiom. `[weak self]` is preferred to `[unowned self]` where it is not immediately obvious that `self` outlives the closure. Explicitly extending lifetime is preferred to optional chaining.
 
 **Preferred**
 ```swift

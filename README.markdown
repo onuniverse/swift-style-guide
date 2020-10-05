@@ -225,10 +225,12 @@ For UIKit view controllers, consider grouping lifecycle, custom accessors, and I
 
 Xcode templates' code and comments should be removed. Header comment (which includes filename, author and copyright) should be the only Xcode generated comment to keep.
 
-Other unused (dead) code should be removed and should never reach `development` branch. You can keep commented code in your branch or even in a feature branch, but `development` branch should be clean from commented code. If a future feature needs some code that has been removed, it can always be retrieved using git. Mark your commit name accordingly when removing code if it is susceptible to be used in the future, it will make it easier to cherry pick.
+Other unused (dead) code should be removed and should never reach `development` branch. You can keep commented code in your branch or even in a feature branch, but `development` branch should be clean from commented code. If a future feature needs some code that has been removed, it can always be retrieved using git. 
+
+When removing dead code containing entire features / functionality, the developer should aim to create one commit containing all feature-related code that's being removed. This commit purpose is to make it easier for the developers to bring back this functionality in the future if ever needed. To make it easier to find those commits, they should have the following message:
+`REMOVED: <functionality that this commit removes> `
 
 Aspirational methods whose implementation simply calls the superclass should also be removed. This includes any empty/unused UIApplicationDelegate methods.
-
 
 **Preferred**:
 ```swift
@@ -253,8 +255,8 @@ override func tableView(_ tableView: UITableView, numberOfRowsInSection section:
     // #warning Incomplete implementation, return the number of rows
     return Database.contacts.count
 }
-
 ```
+
 ### Minimal Imports
 
 Import only the modules a source file requires. For example, don't import `UIKit` when importing `Foundation` will suffice. Likewise, don't import `Foundation` if you must import `UIKit`.

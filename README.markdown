@@ -31,6 +31,7 @@ Our overarching goals are clarity, consistency, and longevity, in that order.
 * [Function Declarations](#function-declarations)
 * [Function Calls](#function-calls)
 * [Closure Expressions](#closure-expressions)
+* [Attributes](#attributes)
 * [Types](#types)
   * [Constants](#constants)
   * [Static Methods and Variable Type Properties](#static-methods-and-variable-type-properties)
@@ -242,7 +243,7 @@ extension MyViewController: UITableViewDataSource {
 }
 
 //==========================================================================
-// MARK: - UIScrollViewDelegate 
+// MARK: - UIScrollViewDelegate
 //==========================================================================
 extension MyViewController: UIScrollViewDelegate {
     // scroll view delegate methods
@@ -336,7 +337,7 @@ var deviceModels: [String]
 ```swift
 if user.isHappy {
     // Do something
-} 
+}
 else {
     // Do something else
 }
@@ -434,7 +435,7 @@ extension Circle: CustomStringConvertible {
     var description: String {
         return "center = \(centerString) area = \(area())"
     }
-    
+
     private var centerString: String {
         return "(\(x),\(y))"
     }
@@ -514,9 +515,9 @@ For functions with very long signatures, put each parameter on a new line and ad
 
 ```swift
 func reticulateSplines(
-    spline: [Double], 
+    spline: [Double],
     adjustmentFactor: Double,
-    translateConstant: Int, 
+    translateConstant: Int,
     multiplier: Double,
     comment: String
 ) -> Bool {
@@ -613,6 +614,23 @@ let value = numbers
     .map {$0 * 2}
     .filter {$0 > 50}
     .map {$0 + 10}
+```
+## Attributes
+When specifying an attribute such as `@discardableResult` or `@available` for a declaration or type, it should be placed in a new line above the declaration. This helps functions from getting too long for a single line.
+
+**Preferred**:
+```swift
+@discardableResult
+func sum(a: Int, b: Int) -> Int {
+    return a + b
+}
+```
+
+**Not Preferred**:
+```swift
+@discardableResult func sum(a: Int, b: Int) -> Int {
+    return a + b
+}
 ```
 
 ## Types
@@ -717,8 +735,8 @@ if let subview = subview, let volume = volume {
 
 // another example
 resource.request().onComplete { [weak self] response in
-    guard let self = self else { 
-	    return 
+    guard let self = self else {
+	    return
     }
     let model = self.updateModel(response)
     self.updateUI(model)
@@ -738,8 +756,8 @@ if let unwrappedSubview = optionalSubview {
 
 // another example
 UIView.animate(withDuration: 2.0) { [weak self] in
-    guard let strongSelf = self else { 
-	    return 
+    guard let strongSelf = self else {
+	    return
     }
     strongSelf.alpha = 1.0
 }
@@ -858,10 +876,10 @@ Code should not create reference cycles. Analyze your object graph and prevent s
 
 ### Extending object lifetime
 
-Extend object lifetime using the `[weak self]` and 
+Extend object lifetime using the `[weak self]` and
 ```
-guard let self = self else { 
-	return 
+guard let self = self else {
+	return
 }
 ```
 idiom. `[weak self]` is preferred to `[unowned self]` where it is not immediately obvious that `self` outlives the closure. Explicitly extending lifetime is preferred to optional chaining.
@@ -920,7 +938,6 @@ class TimeMachine {
     lazy dynamic private var fluxCapacitor = FluxCapacitor()
 }
 ```
-
 ## Control Flow
 
 Prefer the `for-in` style of `for` loop over the `while-condition-increment` style.
@@ -990,7 +1007,7 @@ func computeFFT(context: Context?, inputData: InputData?) throws -> Frequencies 
     guard let context = context else {
         throw FFTError.noContext
     }
-    
+
     guard let inputData = inputData else {
         throw FFTError.noInputData
     }
@@ -1021,10 +1038,10 @@ When multiple optionals are unwrapped either with `guard` or `if let`, minimize 
 
 **Preferred**:
 ```swift
-guard 
+guard
     let number1 = number1,
     let number2 = number2,
-    let number3 = number3 
+    let number3 = number3
     else {
         fatalError("impossible")
 }
